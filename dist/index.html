@@ -5,9 +5,11 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="style/index.css">
-    <title>Item</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/item.js" charset="utf-8"></script>
+    <script src="./bundle.js" charset="utf-8"></script>
+    <!--<script src="js/index.js" charset="utf-8"></script>
+    <script src="js/itemList.js" charset="utf-8"></script>
+    <script src="js/utils.js" charset="utf-8"></script>-->
+    <title>Homepage</title>
     <div class="header">
     <a href="index.html" ><img src="logo.jpg" width="300" height="100" alt="TLU logo"></a>
     <div class="header-right">
@@ -21,7 +23,13 @@
     </div>
   </div>
   </head>
+  <label for="category">Choose a category:</label>
+  <select class="category" id="category">
+    <option value="tablet">Tablets</option>
+    <option value="phone">Phones</option>
+  </select>
   <body>
-    <div id="item"> </div>
+    <div id="Tablets" class="items">
+  </div>
   </body>
 </html>

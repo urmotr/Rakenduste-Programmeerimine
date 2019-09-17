@@ -5,12 +5,18 @@
   "main": "lab1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack --config webpack.config.js",
+    "start:dev": "npm run build && npm run start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.4",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  }
 }

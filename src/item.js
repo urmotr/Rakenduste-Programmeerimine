@@ -1,5 +1,6 @@
 /*jshint esversion:6*/
-$(document ).ready(function() {
+
+function setup(){
   var parent = document.createElement("div");
   const image = document.createElement("img");
   var br = document.createElement('br');
@@ -25,4 +26,8 @@ $(document ).ready(function() {
   parent.append(cost);
   const app = document.getElementById("item");
   app.append(parent);
-});
+}
+
+module.exports = {
+  setup
+}

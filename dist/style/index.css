@@ -3,6 +3,8 @@
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 0px 10px;
+  position: sticky;
+  top:0;
 }
 
 /* Style the header links */
@@ -52,10 +54,16 @@
   }
 }
 
+.items{
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
 .tablets {
   display:inline;
   float:left;
-  margin-right: 20px;
+  margin-right: 78px;
   text-align: center;
 }
 
@@ -65,6 +73,17 @@
 
 .price {
 	color:orange;
+}
+
+.iprice {
+	color:orange;
+  display:block;
+  margin-bottom: 20px;
+}
+
+.ititle {
+	color:orange;
+	font-size:16px;
 }
 
 .title {
