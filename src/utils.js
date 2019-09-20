@@ -1,7 +1,6 @@
 /*jshint esversion:6*/
-const homepage = require("./itemList.js");
 
-function createItems(items){
+export function createItems(items){
   const root = document.getElementById("Tablets");
   root.innerHTML = '';
   items.forEach((item)=>{
@@ -35,9 +34,5 @@ function createItems(items){
     parent.append(image);
     parent.append(cost);
     root.append(parent);
-  })
-}
-
-module.exports = {
-  createItems
+  });
 }

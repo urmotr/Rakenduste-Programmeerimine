@@ -1,7 +1,8 @@
 /*jshint esversion:6*/
 
+export function setupItem(){
+}
 window.addEventListener("load", () =>{
-  console.log("Test");
   var parent = document.createElement("div");
   const image = document.createElement("img");
   var br = document.createElement('br');
@@ -28,7 +29,3 @@ window.addEventListener("load", () =>{
   const app = document.getElementById("item");
   app.append(parent);
 });
-
-/*module.exports = {
-  setup
-};*/

@@ -8,6 +8,23 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  devServer: {
+    /*contentBase: path.join(__dirname, 'dist'),
+    compress: true,*/
+    port: 3000,
+    open: 'chrome'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        }
+      }
+    ]
+  },
   plugins: [
       new CopyPlugin([
         { from: 'public' },
@@ -16,11 +33,4 @@ module.exports = {
 	{dry: true,}
 	),
     ],
-
-	devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 3000,
-	open: 'Google Chrome'
-  },
 };

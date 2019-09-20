@@ -57,6 +57,8 @@
   width: 1000px;
   margin: 0 auto;
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap:wrap;
 }
 
 .tablets {
