@@ -1,5 +1,7 @@
+/*jshint esversion:6*/
+
 const homepage = require("./itemList.js");
-//const itempage = require("./item.js");
+const itempage = require("./item.js");
 
 function openItem(nr){
   localStorage.setItem("img", document.getElementById("img"+nr).src);
@@ -10,5 +12,5 @@ function openItem(nr){
 
 window.addEventListener("load", () =>{
   homepage.setup();
-  //itempage.setup();
+  itempage.setup();
 });
