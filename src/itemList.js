@@ -1,3 +1,5 @@
+/*jshint esversion:6*/
+
 const utils = require("./utils.js");
 
 const tablets= [
@@ -399,4 +401,4 @@ function setup(){
 
 module.exports = {
   setup
-}
+};

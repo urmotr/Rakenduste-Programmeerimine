@@ -1,3 +1,4 @@
+/*jshint esversion:6*/
 const homepage = require("./itemList.js");
 
 function createItems(items){
