@@ -1,10 +1,15 @@
 /*jshint esversion:6*/
 
-const homepage = require("./item.js");
-import {setup} from "./itemList.js";
-import {setupItem} from "./item.js";
+import React from "react";
+import ReactDOM from "react-dom";
 
-window.addEventListener("load", () =>{
-  setup();
-  setupItem();
-});
+const node = document.getElementById("app");
+
+ReactDOM.render(
+  React.createElement(
+    "button",
+    {},
+    "I am a button, Hello world"
+  ),
+  node,
+);
