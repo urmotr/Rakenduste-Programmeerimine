@@ -1,4 +1,7 @@
-const utils = require("./utils.js");
+/*jshint esversion:6*/
+
+//const utils = require("./utils.js");
+import {createItems} from "./utils.js";
 
 const tablets= [
   {
@@ -377,8 +380,9 @@ const phones = [
 ]
 ;
 
-function setup(){
+export function setup(){
   const dropdown = document.querySelector('.category');
+  var items = tablets;
   if(dropdown.value == "tablet"){
     items = tablets;
   } else if (dropdown.value == "phone"){
@@ -392,11 +396,7 @@ function setup(){
       items = phones;
     }
     console.log(items);
-    utils.createItems(items);
+    createItems(items);
   });
-  utils.createItems(items);
-}
-
-module.exports = {
-  setup
+  createItems(items);
 }
