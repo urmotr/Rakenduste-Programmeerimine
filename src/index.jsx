@@ -1,11 +1,15 @@
-/*jshint esversion:6*/
-
 import React from "react";
 import ReactDOM from "react-dom";
+import HomePage from "./HomePage.jsx"
+import ItemPage from "./ItemPage.jsx"
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 const root = document.getElementById("app");
 
 ReactDOM.render(
-  <button>Hello World</button>,
-  root,
+    <BrowserRouter>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/item" exact component={ItemPage} />
+    </BrowserRouter>,
+    root
 );
