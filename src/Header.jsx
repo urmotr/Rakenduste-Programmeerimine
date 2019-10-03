@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -12,7 +12,7 @@ const Header = () => {
                     <button className={"ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"}>user</button>
             </div>
         </div>
-    )
+    );
 };
 
 export default Header;

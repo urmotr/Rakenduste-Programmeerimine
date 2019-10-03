@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import HomePage from "./HomePage.jsx"
-import ItemPage from "./ItemPage.jsx"
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import HomePage from "./HomePage.jsx";
+import ItemPage from "./ItemPage.jsx";
+import { BrowserRouter, Route} from "react-router-dom";
 
 const root = document.getElementById("app");
 

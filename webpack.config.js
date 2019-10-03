@@ -11,11 +11,27 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    port: 3000,
-    open: 'chrome'
+    port: 9000,
+    open: 'chrome',
+    proxy: {
+      "/api": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": true
+      }
+    }
   },
   module: {
     rules: [
+      {
+        enforce: "pre",
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+         //failOnError: true,
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,

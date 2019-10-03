@@ -5,7 +5,7 @@ export function setupItem(){
 window.addEventListener("load", () =>{
   var parent = document.createElement("div");
   const image = document.createElement("img");
-  var br = document.createElement('br');
+  var br = document.createElement("br");
   const titleElement = document.createElement("SPAN");
   const description = document.createElement("SPAN");
   const cost = document.createElement("SPAN");
