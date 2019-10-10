@@ -12,7 +12,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     port: 9000,
-    open: 'chrome',
+    open: 'firefox',
     proxy: {
       "/api": "http://localhost:3000"
     }
