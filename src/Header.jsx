@@ -1,5 +1,7 @@
 import React from "react";
 import {Link } from "react-router-dom";
+import "./header.css"
+import {userIcon, cartIcon} from "./icons.js";
 
 const Header = () => {
     return (
@@ -8,8 +10,8 @@ const Header = () => {
                 <img src="/logo.jpg" width="300" height="100" alt="TLU logo"/>
             </Link>
             <div className={"header-right"}>
-                    <button className={"ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-shop"}>shop</button>
-                    <button className={"ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"}>user</button>
+                    <img className={"icon"} src={userIcon}/>
+                    <img className={"icon"} src={cartIcon}/>
             </div>
         </div>
     );
