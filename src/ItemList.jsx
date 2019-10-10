@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 
 const ItemList = (props) => {
     return (
@@ -7,26 +9,39 @@ const ItemList = (props) => {
             {
                 props.items.map( item => {
                 return <Item
+                    key={item.title}
+                    id={item.id}
                     imgSrc={item.imgSrc}
                     price={item.price}
                     title={item.title}
-                />
+                />;
             })
             }
         </div>
-    )
+    );
+};
+
+ItemList.propTypes = {
+  items: PropTypes.array.isRequired
 };
 
 const Item = (props) => {
     return(
-        <Link to={"/item"}>
+        <Link to={`/items/${props.id}`}>
         <div className={"tablets"}>
             <ItemName title={props.title}/>
             <img src={props.imgSrc} width={"144"} height={"222"}/>
             <div className={"iprice"}>{props.price}</div>
         </div>
         </Link>
-    )
+    );
+};
+
+Item.propTypes = {
+    id: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired
 };
 
 function ItemName(props){

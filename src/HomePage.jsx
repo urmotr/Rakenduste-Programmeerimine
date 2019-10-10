@@ -1,5 +1,5 @@
+
 import React from "react";
-import {phones, tablets} from "./mydatabase";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 
@@ -8,38 +8,53 @@ class HomePage extends React.PureComponent{
     constructor(props){
         super(props);
         this.state = {
-            items: tablets,
-        }
+            items: [],
+            selectedCategory: "tablet",
+        };
     }
-    handleChange(event){
-        console.log(event.target.value);
-        switch(event.target.value){
-            case "phone": {
-                this.setState({
-                    items: phones,
-                });
-                break;
-            }
-            case "tablet":{
-                this.setState({
-                    items: tablets,
-                });
-                break;
 
-            }
-        }
+    componentDidMount() {
+        fetch("/api/items")
+            .then(res => {
+                console.log("res", res);
+                return res.json();
+            })
+            .then(items => {
+                this.setState({
+                    items: items,
+                });
+                this.state.items=items;
+                console.log(this.state.items);
+            })
+            .catch(err => {
+                console.log("err", err);
+            });
+    }
+
+    handleDropdown(event){
+        console.log(event.target.value);
+        this.setState({
+            selectedCategory: event.target.value
+        })
+    }
+
+    getVisibleItems = () => {
+      return this.state.items.filter(item => item.category === this.state.selectedCategory);
     };
+
     render(){
+        console.log("this.state: ", this.state);
+        console.log(this.getVisibleItems());
         return (
             <>
-                <Header/>
-                <select onChange={this.handleChange.bind(this)}>
-                    <option value = "tablet" > Tablets </option>
+             <Header />
+             <select onChange={this.handleDropdown.bind(this)}>
+                    <option value="tablet">tablets</option>
                     <option value="phone">Phones</option>
                 </select>
-                <ItemList items={this.state.items}/>
-            </>
-        )
+             <ItemList items={this.getVisibleItems()} />
+         </>
+        );
     }
 }
 
