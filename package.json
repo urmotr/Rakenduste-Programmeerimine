@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node --experimental-modules server/server.js",
-    "build": "webpack-dev-server --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "start:dev": "concurrently --kill-others \"npm run start\" \"npm run build\""
   },
   "author": "",

@@ -1,5 +1,6 @@
 /* Style the header with a grey background and some padding */
 .header {
+  overflow: hidden;
   background-color: #f1f1f1;
   padding: 0px 10px;
   position: sticky;
@@ -57,6 +58,8 @@
   width: 1000px;
   margin: 0 auto;
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap:wrap;
 }
 
 .tablets {
