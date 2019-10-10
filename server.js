@@ -3,9 +3,13 @@ const app = express()
 const path = require("path");
 const PORT = 3000
 
+app.get('/items/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, "dist", "index.html"));
-})
+});
 
 app.use(express.static('dist'));
 
