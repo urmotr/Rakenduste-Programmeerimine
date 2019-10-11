@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
+import "./homepage.css";
 
 class HomePage extends React.PureComponent{
 
@@ -10,7 +11,9 @@ class HomePage extends React.PureComponent{
         super(props);
         this.state = {
             items: [],
-            selectedCategory: "tablet",
+            selectedCategory: "tablets",
+            allCategories: ["phones", "tablets"],
+            selectedCategories: ["tablets"],
         };
     }
 
@@ -24,7 +27,7 @@ class HomePage extends React.PureComponent{
                 this.setState({
                     items: items,
                 });
-                this.state.items=items;
+                this.setState({items: items});
                 console.log(this.state.items);
             })
             .catch(err => {
@@ -32,24 +35,38 @@ class HomePage extends React.PureComponent{
             });
     }
 
-    handleDropdown(event){
-        console.log(event.target.value);
-        this.setState({
-            selectedCategory: event.target.value
-        })
-    }
-
-    getVisibleItems = () => {
-      return this.state.items.filter(item => item.category === this.state.selectedCategory);
+    handleDropdown = (event) =>{
+        if(this.isSelected(event.target.name)){
+            const clone = this.state.selectedCategories.slice();
+            const index = this.state.selectedCategories.indexOf(event.target.name);
+            clone.splice(index, 1);
+            this.setState({
+                selectedCategories: clone
+            });
+        }else{
+            this.setState({
+                selectedCategories: this.state.selectedCategories.concat([event.target.name])
+            });
+        }
     };
 
+    getVisibleItems = () => {
+      return this.state.items.filter(item => item.category === this.state.selectedCategories[0] || item.category === this.state.selectedCategories[1] || item.category === this.state.selectedCategories[2]);
+    };
+
+    isSelected = (name) => this.state.selectedCategories.indexOf(name) >=0;
+
     render(){
-        console.log("this.state: ", this.state);
-        console.log(this.getVisibleItems());
         return (
             <>
              <Header />
-             <Checkbox name={"phones"} onChange={this.handleDropdown} checked={true}/>
+                <div className={"checkboxlist"}>
+                {this.state.allCategories.map(name => {
+                    return(
+                        <Checkbox key={name} name={name} onChange={this.handleDropdown} checked={this.isSelected(name)}/>
+                    );
+                })}
+                </div>
              <ItemList items={this.getVisibleItems()} />
          </>
         );

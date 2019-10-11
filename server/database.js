@@ -378,15 +378,15 @@ const getItems = () => {
     phones.forEach( (phone, index)=>{
         items.push({
             ...phone,
-            id: "phone-"+index,
-            category: "phone"
+            id: "phones-"+index,
+            category: "phones"
         })
     });
     tablets.forEach( (tablet, index)=>{
         items.push({
             ...tablet,
-            id: "tablet-"+index,
-            category: "tablet"
+            id: "tablets-"+index,
+            category: "tablets"
         })
     });
     return items;
