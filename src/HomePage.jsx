@@ -4,6 +4,7 @@ import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
 import "./homepage.css";
+import Dropdown from "./Dropdown.jsx";
 
 class HomePage extends React.PureComponent{
 
@@ -67,6 +68,7 @@ class HomePage extends React.PureComponent{
                     );
                 })}
                 </div>
+                <Dropdown/>
              <ItemList items={this.getVisibleItems()} />
          </>
         );
