@@ -15,13 +15,13 @@
 }
 
 
-input[type=checkbox]{
+.checkboxlist > div > input[type=checkbox]{
     height: 0;
     width: 0;
     visibility: hidden;
 }
 
-label {
+.checkboxlist > div > label {
     cursor: pointer;
     width: 75px;
     height: 29px;
@@ -31,7 +31,7 @@ label {
     position: relative;
 }
 
-label:after {
+.checkboxlist > div > label:after {
     content: '';
     position: absolute;
     top: 3px;
@@ -43,16 +43,16 @@ label:after {
     transition: 0.3s;
 }
 
-input:checked + label {
+.checkboxlist > div > input:checked + label {
     background: #bada55;
 }
 
-input:checked + label:after {
+.checkboxlist > div > input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
 }
 
-label:active:after {
+.checkboxlist > div > label:active:after {
     width: 32px;
 }
 

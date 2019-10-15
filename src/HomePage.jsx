@@ -3,16 +3,15 @@ import React from "react";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
-import "./homepage.css";
-import Dropdown from "./Dropdown.jsx";
+import SortDropdown from "./SortDropdown.jsx";
 
 class HomePage extends React.PureComponent{
 
     constructor(props){
         super(props);
         this.state = {
+            sortDirection: -1,
             items: [],
-            selectedCategory: "tablets",
             allCategories: ["phones", "tablets"],
             selectedCategories: ["tablets"],
         };
@@ -52,10 +51,25 @@ class HomePage extends React.PureComponent{
     };
 
     getVisibleItems = () => {
-      return this.state.items.filter(item => item.category === this.state.selectedCategories[0] || item.category === this.state.selectedCategories[1] || item.category === this.state.selectedCategories[2]);
+      return this.state.items.filter(item => item.category === this.state.selectedCategories[0] || item.category === this.state.selectedCategories[1] || item.category === this.state.selectedCategories[2])
+          .sort((a,b) => {
+              switch (this.state.sortDirection){
+                  case -1: return b.price - a.price;
+                  case 1: return a.price - b.price;
+              }
+          });
     };
 
     isSelected = (name) => this.state.selectedCategories.indexOf(name) >=0;
+
+    handleSortDropdown = (event) => {
+        console.log(event.target.value);
+        if(event.target.value != 0) {
+            this.setState({
+                sortDirection: parseInt(event.target.value)
+            });
+        }
+    };
 
     render(){
         return (
@@ -68,7 +82,11 @@ class HomePage extends React.PureComponent{
                     );
                 })}
                 </div>
-                <Dropdown/>
+                <SortDropdown
+                    direction={this.state.sortDirection}
+                    onChange={this.handleSortDropdown}
+                    isSelected={this.isSelected}
+                />
              <ItemList items={this.getVisibleItems()} />
          </>
         );
