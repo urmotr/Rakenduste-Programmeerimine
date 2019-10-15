@@ -14,6 +14,7 @@ class HomePage extends React.PureComponent{
             items: [],
             allCategories: ["phones", "tablets"],
             selectedCategories: ["tablets"],
+            sortMethod: "Price high to low",
         };
     }
 
@@ -66,7 +67,8 @@ class HomePage extends React.PureComponent{
         console.log(event.target.value);
         if(event.target.value != 0) {
             this.setState({
-                sortDirection: parseInt(event.target.value)
+                sortDirection: parseInt(event.target.value),
+                sortMethod: event.target.alt
             });
         }
     };
@@ -82,11 +84,15 @@ class HomePage extends React.PureComponent{
                     );
                 })}
                 </div>
-                <SortDropdown
-                    direction={this.state.sortDirection}
-                    onChange={this.handleSortDropdown}
-                    isSelected={this.isSelected}
-                />
+                <div className={"sorting"}>
+                    <p>Items found {this.getVisibleItems().length} {this.state.selectedCategories.join(", ")}</p>
+                    <SortDropdown
+                        direction={this.state.sortDirection}
+                        onChange={this.handleSortDropdown}
+                        isSelected={this.isSelected}
+                        sortMethod={this.state.sortMethod}
+                    />
+                 </div>
              <ItemList items={this.getVisibleItems()} />
          </>
         );
