@@ -378,7 +378,7 @@ const getItems = () => {
     phones.forEach( (phone, index)=>{
         items.push({
             ...phone,
-            id: "phones-"+index,
+           // id: "phones-"+index,
             category: "phones",
             price: cleanPrice(phone.price)
 
@@ -387,7 +387,7 @@ const getItems = () => {
     tablets.forEach( (tablet, index)=>{
         items.push({
             ...tablet,
-            id: "tablets-"+index,
+           // id: "tablets-"+index,
             category: "tablets",
             price: cleanPrice(tablet.price)
         })

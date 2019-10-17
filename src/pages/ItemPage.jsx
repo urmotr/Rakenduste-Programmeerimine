@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header.jsx";
 import PropTypes from "prop-types";
 
 class ItemPage extends React.PureComponent{
@@ -30,7 +29,6 @@ class ItemPage extends React.PureComponent{
     render(){
         return (
             <>
-           <Header/>
            <div className={"tablets"}>
                     <div className={"ititle"}>{this.state.title}</div>
                     <img src={this.state.imgSrc} width={"144"} height={"222"}/>
