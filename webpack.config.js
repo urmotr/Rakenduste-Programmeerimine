@@ -14,7 +14,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
-    //open: 'firefox',
+    open: 'firefox',
     proxy: {
       "/api": "http://localhost:3000"
     }
@@ -22,19 +22,24 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          failOnError: true,
+        },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react"
-            ],
-            plugins: [
-              "@babel/plugin-proposal-class-properties"
-            ]
-          }
         }
       }
     ]

@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
 
 //const utils = require("./utils.js");
-import {createItems} from "./utils.js";
+import {createItems} from "../utils.js";
 
 
 function setup(){

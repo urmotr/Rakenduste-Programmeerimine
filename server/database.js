@@ -378,18 +378,25 @@ const getItems = () => {
     phones.forEach( (phone, index)=>{
         items.push({
             ...phone,
-            id: "phone-"+index,
-            category: "phone"
+           // id: "phones-"+index,
+            category: "phones",
+            price: cleanPrice(phone.price)
+
         })
     });
     tablets.forEach( (tablet, index)=>{
         items.push({
             ...tablet,
-            id: "tablet-"+index,
-            category: "tablet"
+           // id: "tablets-"+index,
+            category: "tablets",
+            price: cleanPrice(tablet.price)
         })
     });
     return items;
+};
+
+const cleanPrice = (dirty) => {
+    return parseFloat(dirty.replace("€", "").replace(" ", ""));
 };
 
 const getItem = (itemId) =>{
