@@ -1,2 +1,4 @@
 node_modules/
 webpack-demo/
+.idea/
+.env
