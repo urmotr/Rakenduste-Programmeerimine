@@ -18,3 +18,6 @@ https://rp2019ur.herokuapp.com/
 12. Toote vaatamine
 13. Toodete arvustused
 14. 
+
+Küsimus: Kuidas kasutada npm install (local) ja npm install (global)
+
