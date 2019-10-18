@@ -29,8 +29,8 @@ const Item = (props) => {
     return(
         <Link to={`/items/${props.id}`}>
         <div className={"tablets"}>
-            <ItemName title={props.title}/>
-            <img src={props.imgSrc} width={"144"} height={"222"}/>
+            <img className={"images"} src={props.imgSrc}/>
+            <div className={"ititle"}>{props.title}</div>
             <div className={"iprice"}>{props.price}</div>
         </div>
         </Link>
@@ -44,12 +44,5 @@ Item.propTypes = {
     price: PropTypes.number.isRequired
 };
 
-function ItemName(props){
-    if(props.title.length > 15){
-        return <div className={"ititle"}>{props.title.slice(0, 15)+"..."}</div>;
-    }else{
-        return <div className={"ititle"}>{props.title}</div>;
-    }
-}
 
 export default ItemList;

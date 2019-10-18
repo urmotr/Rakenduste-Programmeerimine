@@ -5,8 +5,10 @@ const PORT = process.env.PORT || 3000;
 const DB = require("./database.js");
 const mongoose = require("mongoose");
 const itemRouter = require("./item.router.js");
+const userRouter = require("./user.router.js");
 require('dotenv').config();
 const Item = require('./item.model');
+const bodyParser = require('body-parser');
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0-c7y2s.gcp.mongodb.net/test?retryWrites=true&w=majority`;
 
@@ -20,7 +22,9 @@ mongoose.connect(DB_URL)
       console.error("error happened", err)
     });
 
+app.use(bodyParser.json());
 app.use(itemRouter);
+app.use(userRouter);
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, "../dist", "index.html"));

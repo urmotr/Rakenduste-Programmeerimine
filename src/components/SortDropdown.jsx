@@ -17,12 +17,12 @@ const SortDropdown = ({direction, onChange, sortMethod}) => {
 
                 <ul className="select_options">
                     <li className="select_option">
-                        <input value={1} className="select_input" type="radio" name="awesomeness" alt={"Price high to low"} id="awesomeness-ridiculous"/>
+                        <input value={-1} className="select_input" type="radio" name="awesomeness" alt={"Price high to low"} id="awesomeness-ridiculous"/>
                         <label className="select_label" htmlFor="awesomeness-ridiculous">Price high to low</label>
                     </li>
 
                     <li className="select_option">
-                        <input value={-1}  className="select_input" type="radio" name="awesomeness" alt={"Price low to high"} id="awesomeness-reasonable"/>
+                        <input value={1}  className="select_input" type="radio" name="awesomeness" alt={"Price low to high"} id="awesomeness-reasonable"/>
                         <label className="select_label" htmlFor="awesomeness-reasonable">Price low to high</label>
                     </li>
                 </ul>
