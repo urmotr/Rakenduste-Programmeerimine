@@ -74,6 +74,7 @@ class HomePage extends React.PureComponent{
     render(){
         return (
             <>
+                <div className={"filters"}>
                 <div className={"checkboxlist"}>
                 {this.state.allCategories.map(name => {
                     return(
@@ -82,7 +83,7 @@ class HomePage extends React.PureComponent{
                 })}
                 </div>
                 <div className={"sorting"}>
-                    <p>Items found {this.getVisibleItems().length} {this.state.selectedCategories.join(", ")}</p>
+                    <p className={"sortp"}>Items found {this.getVisibleItems().length} {this.state.selectedCategories.join(", ")}</p>
                     <SortDropdown
                         direction={this.state.sortDirection}
                         onChange={this.handleSortDropdown}
@@ -90,6 +91,7 @@ class HomePage extends React.PureComponent{
                         sortMethod={this.state.sortMethod}
                     />
                  </div>
+                </div>
              <ItemList items={this.getVisibleItems()} />
          </>
         );

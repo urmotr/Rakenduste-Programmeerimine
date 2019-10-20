@@ -2,7 +2,7 @@ body{
     background-color: #f7f7f7;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-width: 400px) {
     .items {
         width: 90%;
         margin: 0 auto;
@@ -63,59 +63,29 @@ body{
 }
 
 @media screen and (min-width: 1000px) {
-    .items{
-        width: 69%;
-        margin: 0 auto;
-        margin-bottom: 20px;
-        display: flex;
-        flex-wrap:wrap;
-    }
-
-    .images{
-        width:150px;
-        height:150px;
-    }
-
-    .tablets {
-        display:inline;
-        float:left;
-        margin-right: 78px;
-        text-align: center;
-    }
-
-    .caption {
-        display:block;
-    }
-
-    .price {
-        color:orange;
-    }
-
-    .iprice {
-        color:orange;
-        display:block;
-        margin-bottom: 20px;
-    }
-
-    .ititle {
-        color:orange;
-        font-size:16px;
-    }
-
-    .title {
-        color:orange;
-        font-size:32px;
-    }
-
-}
-
-@media screen and (max-width: 400px) {
     .items {
-        width: 90%;
+        width: 70%;
         margin: 0 auto;
         margin-bottom: 20px;
         flex-wrap:wrap;
         overflow: auto;
+    }
+    .sortp {
+        left:45px;
+    }
+    .filters {
+        float: left;
+    }
+    .select {
+        width: 225px;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: 0 2px 0 white;
+        border-radius: 2px;
+        position: absolute;
+        margin: auto;
+        right: 0px;
+
     }
     .images{
         width:150px;
@@ -160,6 +130,72 @@ body{
         font-style: normal;
         font-weight: 400;
         padding-top: 10px;
+    }
+
+    .title {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .items {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+        overflow: auto;
+    }
+    .images{
+        width:150px;
+        height:150px;
+        float: unset;
+        padding-right: 30px;
+        padding-left: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .tablets {
+        display:inline;
+        float:left;
+        text-align: justify;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .caption {
+        display:block;
+    }
+
+    .price {
+        color:orange;
+    }
+
+    .iprice {
+        color:#000;
+        font-size: 1.5em;
+        display: block;
+        font-weight: 700;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        float: right;
+    }
+
+    .ititle {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+        padding-top: 20px;
+        position: relative;
+        padding-bottom: 20px;
     }
 
     .title {
