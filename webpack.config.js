@@ -14,14 +14,14 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
-    //open: 'firefox',
+    open: 'firefox',
     proxy: {
       "/api": "http://localhost:3000"
     }
   },
   module: {
     rules: [
-      /*{
+      {
         enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -29,7 +29,7 @@ module.exports = {
         options: {
           failOnError: true,
         },
-      },*/
+      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],

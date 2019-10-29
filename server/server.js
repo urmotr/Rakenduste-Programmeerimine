@@ -6,6 +6,7 @@ const DB = require("./database.js");
 const mongoose = require("mongoose");
 const itemRouter = require("./item.router.js");
 const userRouter = require("./user.router.js");
+const authRouter = require("./auth.router.js");
 const Item = require('./item.model');
 const bodyParser = require('body-parser');
 
@@ -26,8 +27,10 @@ mongoose.connect(DB_URL)
     });
 
 app.use(bodyParser.json());
-app.use(itemRouter);
-app.use(userRouter);
+
+app.use("/api/v1", itemRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users",userRouter);
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
