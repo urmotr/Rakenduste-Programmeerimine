@@ -1,38 +1,206 @@
-.items{
-  width: 1000px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap:wrap;
+body{
+    background-color: #f7f7f7;
 }
 
-.tablets {
-  display:inline;
-  float:left;
-  margin-right: 78px;
-  text-align: center;
+@media screen and (min-width: 400px) {
+    .items {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+        overflow: auto;
+    }
+    .images{
+        width:150px;
+        height:150px;
+        float: left;
+        padding-right: 30px;
+        padding-left: 15px;
+    }
+    .tablets {
+        display:inline;
+        float:left;
+        text-align: justify;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .caption {
+        display:block;
+    }
+
+    .price {
+        color:orange;
+    }
+
+    .iprice {
+        color:#000;
+        font-size: 1.5em;
+        display: block;
+        position: absolute;
+        right: 0.75rem;
+        bottom: 3.875rem;
+        font-weight: 700;
+    }
+
+    .ititle {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+        padding-top: 10px;
+    }
+
+    .title {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+    }
 }
 
-.caption {
-  display:block;
+@media screen and (min-width: 1000px) {
+    .items {
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+        overflow: auto;
+    }
+    .sortp {
+        left:45px;
+    }
+    .filters {
+        float: left;
+    }
+    .select {
+        width: 225px;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: 0 2px 0 white;
+        border-radius: 2px;
+        position: absolute;
+        margin: auto;
+        right: 0px;
+
+    }
+    .images{
+        width:150px;
+        height:150px;
+        float: left;
+        padding-right: 30px;
+        padding-left: 15px;
+    }
+    .tablets {
+        display:inline;
+        float:left;
+        text-align: justify;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .caption {
+        display:block;
+    }
+
+    .price {
+        color:orange;
+    }
+
+    .iprice {
+        color:#000;
+        font-size: 1.5em;
+        display: block;
+        position: absolute;
+        right: 0.75rem;
+        bottom: 3.875rem;
+        font-weight: 700;
+    }
+
+    .ititle {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+        padding-top: 10px;
+    }
+
+    .title {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+    }
 }
 
-.price {
-	color:orange;
-}
+@media screen and (max-width: 400px) {
+    .items {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+        overflow: auto;
+    }
+    .images{
+        width:150px;
+        height:150px;
+        float: unset;
+        padding-right: 30px;
+        padding-left: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .tablets {
+        display:inline;
+        float:left;
+        text-align: justify;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-.iprice {
-	color:orange;
-  display:block;
-  margin-bottom: 20px;
-}
+    .caption {
+        display:block;
+    }
 
-.ititle {
-	color:orange;
-	font-size:16px;
-}
+    .price {
+        color:orange;
+    }
 
-.title {
-	color:orange;
-	font-size:32px;
+    .iprice {
+        color:#000;
+        font-size: 1.5em;
+        display: block;
+        font-weight: 700;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        float: right;
+    }
+
+    .ititle {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+        padding-top: 20px;
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .title {
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+    }
 }
