@@ -3,6 +3,10 @@
     padding-top: 30px;
 }
 
+.icontext{
+    display:inline-block;
+}
+
 .header {
     overflow: hidden;
     background-color: #dbdbdb;

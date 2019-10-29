@@ -18,27 +18,30 @@ router.delete("/api/users/", (req, res) =>{
 
 
 router.post("/api/users/login", (req, res) =>{
-    User.findOne({email: req.body.email}, (err, doc) => {
-        if(err) return handleError(err, res);
-        res.send(doc);
-    });
+    console.log("body", req.body);
+    User.login(req.body)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(err =>{
+            return handleError(err, res);
+        });
 });
 
 router.post("/api/users/signup", (req, res) =>{
-    console.log("body", req.body);
-   const user = new User(req.body);
-   user.save((err) => {
-       if(err) return handleError(err, res);
-       console.log("saved");
-       res.send("Sucess");
-   });
+    User.signup(req.body)
+        .then(user => {
+            res.status(200).json(user);
+        })
+        .catch(err =>{
+           return handleError(err, res);
+        });
 });
 
 
 function handleError(err, res){
     console.log(err);
     res.status(500);
-    res.send("Email already exists!")
 }
 
 module.exports = router;

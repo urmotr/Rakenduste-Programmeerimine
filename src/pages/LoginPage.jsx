@@ -5,7 +5,7 @@ class SignupPage extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: ""
         };
 
@@ -13,9 +13,15 @@ class SignupPage extends React.PureComponent {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event) {
-        console.log("Username: " + this.state.username);
-        console.log("Password: " + this.state.password);
+        console.log(this.state);
         event.preventDefault();
+        fetch("api/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        });
     }
 
     handleChange(event) {
@@ -32,8 +38,8 @@ class SignupPage extends React.PureComponent {
                     <h1 className="title">Login</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="input-container">
-                            <input name={"username"} value={this.state.username} onChange={this.handleChange} type="#{type}" id="#{label}" required="required"/>
-                            <label htmlFor="#{label}">Username</label>
+                            <input name={"email"} value={this.state.email} onChange={this.handleChange} type="email" id="#{label}" required="required"/>
+                            <label htmlFor="#{label}">Email</label>
                             <div className="bar"></div>
                         </div>
                         <div className="input-container">
@@ -44,7 +50,7 @@ class SignupPage extends React.PureComponent {
                         <div className="button-container">
                             <button value={"Submit"}><span>Go</span></button>
                         </div>
-                        <div className="footer"><a href="#">Create an account</a></div>
+                        <div className="footer"><a href="../signup">Create an account</a></div>
                     </form>
                 </div>
                 </div>

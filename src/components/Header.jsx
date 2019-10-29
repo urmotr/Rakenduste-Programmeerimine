@@ -11,6 +11,7 @@ const Header = () => {
             </Link>
             <div className={"header-right"}>
                     <img className={"icon"} src={userIcon}/>
+                <div className={"icontext"}> <a href={"/login"}>Login/<br/>Register</a></div>
                     <img className={"icon"} src={cartIcon}/>
             </div>
         </div>
