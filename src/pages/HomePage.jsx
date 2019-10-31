@@ -17,7 +17,7 @@ class HomePage extends React.PureComponent{
     }
 
     componentDidMount() {
-        fetch("/api/items")
+        fetch("/api/v1/items")
             .then(res => {
                 console.log("res", res);
                 return res.json();

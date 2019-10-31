@@ -1,12 +1,17 @@
 import React from "react";
 import "../components/login.css";
+import PropTypes from "prop-types";
 
 class LoginPage extends React.PureComponent {
+
+    static propTypes = {
+        history: PropTypes.object.isRequired,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
             password: "",
-            confirmPassword: "",
             email: ""
         };
 
@@ -16,13 +21,21 @@ class LoginPage extends React.PureComponent {
     handleSubmit(event) {
         console.log(this.state);
         event.preventDefault();
-        fetch("api/users/signup", {
+        fetch("/api/v1/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(this.state)
-        });
+        })
+            .then(res => res.json())
+            .then(data => {
+               console.log(data);
+               this.props.history.push("/login");
+            })
+            .catch(err =>{
+                console.log("Error", err);
+            });
     }
 
     handleChange(event) {
@@ -45,11 +58,6 @@ class LoginPage extends React.PureComponent {
                         </div>
                         <div className="input-container">
                             <input name={"password"}  value={this.state.password} onChange={this.handleChange} type="password" id="#{label}" required="required"/>
-                            <label htmlFor="#{label}">Password</label>
-                            <div className="bar"></div>
-                        </div>
-                        <div className="input-container">
-                            <input name={"confirmPassword"}  value={this.state.confirmPassword} onChange={this.handleChange} type="password" id="#{label}" required="required"/>
                             <label htmlFor="#{label}">Password</label>
                             <div className="bar"></div>
                         </div>
