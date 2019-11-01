@@ -24,7 +24,7 @@ const Header = (props) => {
 const LoginRegisterIcon = () => (
     <>
         <img className={"icon"} src={userIcon}/>
-        <div className={"icontext"}> <a href={"/login"}>Login/<br/>Register</a></div>
+        <div className={"icontext"}> <a href={"../login"}>Login/<br/>Register</a></div>
      </>
 );
 
@@ -32,7 +32,7 @@ const WelcomeIcon = (props) => (
     <>
         <img className={"icon"} src={userIcon}/>
         <div className={"icontext"}>
-            <Link to={`/users/${props.user._id}`} activeClassName="active">Welcome {props.user.email}</Link></div>
+            <Link to={`../users/${props.user._id}`} activeClassName="active">Welcome {props.user.email}</Link></div>
      </>
 );
 
