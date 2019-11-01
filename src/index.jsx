@@ -7,6 +7,7 @@ import { BrowserRouter, Route} from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 const root = document.getElementById("app");
 
@@ -51,6 +52,7 @@ class App extends React.Component{
                                 render={(props) => <UserPage {...props} user={this.state.user}/>}
                             />
                             <Route path="/items/:itemId" exact component={ItemPage} />
+                            <Route path="*" exact component={NotFoundPage}/>
                     </BrowserRouter>
                 );
         }
