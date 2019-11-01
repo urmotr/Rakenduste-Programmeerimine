@@ -33,7 +33,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users",userRouter);
 
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 });
 
