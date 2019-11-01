@@ -42,7 +42,6 @@ class SignupPage extends React.PureComponent {
     }
     render() {
         return (
-
             <div className="container">
                 <div className="card"></div>
                 <div className="card">

@@ -34,19 +34,23 @@ class HomePage extends React.PureComponent{
             });
     }
 
-    handleDropdown = (event) =>{
-        if(this.isSelected(event.target.name)){
-            const clone = this.state.selectedCategories.slice();
-            const index = this.state.selectedCategories.indexOf(event.target.name);
-            clone.splice(index, 1);
-            this.setState({
-                selectedCategories: clone
-            });
-        }else{
-            this.setState({
-                selectedCategories: this.state.selectedCategories.concat([event.target.name])
-            });
-        }
+    handleFilterSelect = (event) =>{
+        const categoryName = event.target.name;
+        if(this.isSelected(categoryName)) return this.unselectCategory(categoryName);
+        this.selectCategory(categoryName);
+    };
+
+    unselectCategory = (categoryName) => {
+        const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+        this.setState({
+            selectedCategories: newArr
+        });
+    };
+
+    selectCategory = (categoryName) => {
+        this.setState({
+            selectedCategories: this.state.selectedCategories.concat([categoryName])
+        });
     };
 
     getVisibleItems = () => {
@@ -78,7 +82,7 @@ class HomePage extends React.PureComponent{
                 <div className={"checkboxlist"}>
                 {this.state.allCategories.map(name => {
                     return(
-                        <Checkbox key={name} name={name} onChange={this.handleDropdown} checked={this.isSelected(name)}/>
+                        <Checkbox key={name} name={name} onChange={this.handleFilterSelect} checked={this.isSelected(name)}/>
                     );
                 })}
                 </div>
