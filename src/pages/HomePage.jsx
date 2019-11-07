@@ -24,7 +24,6 @@ class HomePage extends React.PureComponent{
                     items: items,
                 });
                 this.setState({items: items});
-                console.log("Nppd");
             })
             .catch(err => {
                 console.log("err", err);

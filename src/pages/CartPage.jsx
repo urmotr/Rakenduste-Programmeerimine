@@ -1,101 +1,68 @@
 import React from "react";
 import "../components/shoppingcart.css";
-/*import {getItem} from "../components/Items.jsx";
-import PropTypes from "prop-types";*/
+import {getItem} from "../components/Items.jsx";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 
 class cartPage extends React.PureComponent {
-   /* state={
-        items: {
-            image: "www.ee",
-        },
-    };
+        state = {
+            items: [],
+        };
     componentDidMount(){
         getItem()
             .then(items => {
-                this.setState({
-                    items: items,
-                });
-                this.setState({items: items});
-                console.log(this.state);
+                this.setState({items: items.slice(52,56)});
+                console.log(this.state.items);
+                return items;
             })
             .catch(err => {
                 console.log("err", err);
             });
     }
-    getRandomItem=()=>{
-        console.log(this.state.items);
-        return this.state.items;
-    };*/
+
     render() {
         return (
+            <>
             <div className="shopping-cart">
                 <div className="title">
                     Shopping Cart
                 </div>
-
+                <Item items={this.state.items}/>
             </div>
+                <div className="priceCont">
+                    Summa: {this.state.items.reduce( (a,b) => a+b.price,0 )}
+                </div>
+                <FontAwesomeIcon className="buy-button" icon={faShoppingCart}/>
+            </>
         );
     }
 }
 
-/*const ShopItem = (props) => {
-    return (
-        <div className={"items"}>
-            {
-                props.items.map( item => {
-                    return <Item
-                        key={item._id}
-                        id={item._id}
-                        imgSrc={item.imgSrc}
-                        price={item.price}
-                        title={item.title}
-                    />;
-                })
-            }
-        </div>
-);};*/
-/*
-const Item = (props) => {
+const Item = ({items}) => {
     return(
-    <div className="item">
-        <div className="buttons">
-            <span className="delete-btn"></span>
-            <span className="like-btn"></span>
-        </div>
-        <div className="image">
-            <img src={props.imgSrc} alt=""/>
-        </div>
-
-        <div className="description">
-            <span>Common Projects</span>
-            <span>Bball High</span>
-            <span>White</span>
-        </div>
-
-        <div className="quantity">
-            <button className="plus-btn" type="button" name="button">
-                <img src="plus.svg" alt=""/>
-            </button>
-            <input type="text" name="name" value="1"/>
-            <button className="minus-btn" type="button" name="button">
-                <img src="minus.svg" alt=""/>
-            </button>
-        </div>
-        <div className="total-price">$549</div>
-    </div>
+        <>
+        {items.map ( (item) =>
+                <div className="cart" key={item._id}>
+                    <div className="imageDiv">
+                        <img className="image" src={item.imgSrc} alt=""/>
+                    </div>
+                    <div className="description">
+                        <span>{item.title}</span>
+                    </div>
+                    <div className="total-price">{item.price} € </div>
+                    <div className="buttons">
+                        <FontAwesomeIcon className="delete-btn" icon={faTrashAlt}/>
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
-
-ShopItem.propTypes={
-    items: PropTypes.object,
-};
-
 Item.propTypes={
-    imgSrc: PropTypes.string,
-    title: PropTypes.string,
-    price: PropTypes.number
-};*/
+    items: PropTypes.array,
+};
 
 export default cartPage;

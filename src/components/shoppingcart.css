@@ -1,6 +1,6 @@
 .shopping-cart {
     width: 750px;
-    height: 423px;
+    height: 620px;
     margin: 80px auto;
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
@@ -19,9 +19,9 @@
     font-weight: 400;
 }
 
-.item {
+.cart {
     padding: 20px 30px;
-    height: 120px;
+    height: 160px;
     display: flex;
 }
 
@@ -35,14 +35,15 @@
     padding-top: 30px;
     margin-right: 60px;
 }
-.delete-btn,
-.like-btn {
+.delete-btn
+{
     display: inline-block;
     Cursor: pointer;
 }
 .delete-btn {
     width: 18px;
     height: 17px;
+    margin-left: 20px;
 }
 
 .is-active {
@@ -59,15 +60,22 @@
     100% { background-position: right; }
 }
 
-.image {
+.imageDiv{
+    width: 100px;
+    height: 100px;
     margin-right: 50px;
 }
+.image {
+    height: 100px;
+    width: auto;
+    display:block;
+    margin:auto;
+}
 
-Let’s add some basic style to  product name and description.
 .description {
     padding-top: 10px;
     margin-right: 60px;
-    width: 115px;
+    width: 400px;
 }
 
 .description span {
@@ -100,14 +108,6 @@ Let’s add some basic style to  product name and description.
     font-weight: 300;
 }
 
-button[class*=btn] {
-    width: 30px;
-    height: 30px;
-    background-color: #E1E8EE;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-}
 .minus-btn img {
     margin-bottom: 3px;
 }
@@ -121,7 +121,7 @@ input:focus {
 }
 
 .total-price {
-    width: 83px;
+    width: 93px;
     padding-top: 27px;
     text-align: center;
     font-size: 16px;
@@ -135,7 +135,7 @@ input:focus {
         height: auto;
         overflow: hidden;
     }
-    .item {
+    .cart {
         height: auto;
         flex-wrap: wrap;
         justify-content: center;
