@@ -8,6 +8,10 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
+import store from "./store.js";
+import CartPage from "./pages/CartPage.jsx";
+
+console.log(store);
 
 const root = document.getElementById("app");
 
@@ -32,7 +36,6 @@ class App extends React.Component{
         };
 
         render(){
-                console.log(this.state.user);
                 return(
                     <AuthContext.Provider value={this.state}>
                     <BrowserRouter>
@@ -48,6 +51,7 @@ class App extends React.Component{
                             <Route path="/signup" exact component={SignupPage} />
                             <Route path="/users/:id" exact component={UserPage}/>
                             <Route path="/items/:itemId" exact component={ItemPage} />
+                            <Route path="/checkout/cart" exact component={CartPage} />
                             <Route path="*" exact component={NotFoundPage}/>
                         </Switch>
                     </BrowserRouter>

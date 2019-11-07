@@ -15,8 +15,9 @@ const Header = (props) => {
                         {props.user.email && <WelcomeIcon user={props.user}/>}
 
                         {!props.user.email && <LoginRegisterIcon/>}
-
-                        <img className={"icon"} src={cartIcon}/>
+                        <Link to={"/checkout/cart"}>
+                            <img className={"icon"} src={cartIcon}/>
+                        </Link>
                     </div>
                 </div>
     );
@@ -24,8 +25,10 @@ const Header = (props) => {
 
 const LoginRegisterIcon = () => (
     <>
+    <Link to={"../login"}>
         <img className={"icon"} src={userIcon}/>
-        <div className={"icontext"}> <a href={"../login"}>Login/<br/>Register</a></div>
+        <div className={"icontext"}> Login/<br/>Register</div>
+    </Link>
      </>
 );
 
