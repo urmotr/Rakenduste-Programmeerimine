@@ -2,6 +2,7 @@ import React from "react";
 import ItemList from "../components/ItemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import SortDropdown from "../components/SortDropdown.jsx";
+import {getItem} from "../components/Items.jsx";
 
 class HomePage extends React.PureComponent{
 
@@ -17,17 +18,12 @@ class HomePage extends React.PureComponent{
     }
 
     componentDidMount() {
-        fetch("/api/v1/items")
-            .then(res => {
-                console.log("res", res);
-                return res.json();
-            })
+            getItem()
             .then(items => {
                 this.setState({
                     items: items,
                 });
                 this.setState({items: items});
-                console.log(this.state.items);
             })
             .catch(err => {
                 console.log("err", err);
@@ -66,7 +62,6 @@ class HomePage extends React.PureComponent{
     isSelected = (name) => this.state.selectedCategories.indexOf(name) >=0;
 
     handleSortDropdown = (event) => {
-        console.log(event.target.value);
         if(event.target.value != 0) {
             this.setState({
                 sortDirection: parseInt(event.target.value),

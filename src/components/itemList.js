@@ -13,13 +13,11 @@ function setup(){
     items = phones;
   }
   dropdown.addEventListener('change', (event) => {
-    console.log(event.target.value);
     if(event.target.value == "tablet"){
       items = tablets;
     } else if (event.target.value == "phone"){
       items = phones;
     }
-    console.log(items);
     createItems(items);
   });
   createItems(items);
