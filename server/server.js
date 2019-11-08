@@ -31,27 +31,11 @@ app.use(bodyParser.json());
 app.use("/api/v1", itemRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users",userRouter);
+/** For images and bundle.js */
+app.use("/static", express.static("dist/static"));
 
-
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-
-app.get('/signup', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-
-app.get('/users/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-
-app.get('/items/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
+/** For index.html */
+app.use("/*", express.static("dist"));
 
 function listen(){
     app.listen(process.env.PORT || PORT, () => {

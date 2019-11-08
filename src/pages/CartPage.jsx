@@ -31,10 +31,13 @@ class cartPage extends React.PureComponent {
                 </div>
                 <Item items={this.state.items}/>
             </div>
-                <div className="priceCont">
-                    Summa: {this.state.items.reduce( (a,b) => a+b.price,0 )}
-                </div>
-                <FontAwesomeIcon className="buy-button" icon={faShoppingCart}/>
+             <div className="pricecont">
+                 Summa: {this.state.items.reduce( (a,b) => a+b.price,0 )}
+                 <div className="button-container">
+                     <button value={"Submit"}><span> <FontAwesomeIcon icon={faShoppingCart}/> Checkout</span></button>
+                 </div>
+
+             </div>
             </>
         );
     }
