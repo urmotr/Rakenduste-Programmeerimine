@@ -62,7 +62,6 @@ app.get('/checkout/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 });
 
-
 function listen(){
     app.listen(process.env.PORT || PORT, () => {
         console.log("Server started", PORT);
