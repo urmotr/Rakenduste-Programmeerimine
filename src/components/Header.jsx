@@ -9,7 +9,7 @@ const Header = (props) => {
     return (
                 <div className={"header"}>
                     <Link to={"/"}>
-                        <img src="/logo.jpg" width="300" height="100" alt="TLU logo"/>
+                        <img src="/static/images/logo.jpg" width="300" height="100" alt="TLU logo"/>
                     </Link>
                     <div className={"header-right"}>
                         {props.user.email && <WelcomeIcon user={props.user}/>}

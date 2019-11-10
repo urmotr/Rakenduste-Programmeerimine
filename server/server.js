@@ -32,6 +32,12 @@ app.use("/api/v1", itemRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users",userRouter);
 
+/** For images and bundle.js */
+app.use("/static", express.static("dist/static"));
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
+/** For index.html */
 app.use("/*", express.static("dist"));
 
 function listen(){
@@ -40,7 +46,7 @@ function listen(){
     });
 }
 
-app.use(express.static('../dist'));
+app.use(express.static('dist'));
 
 function migrate(){
     Item.count({}, (err, x)=>{

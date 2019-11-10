@@ -6,8 +6,9 @@ module.exports = {
   //mode: "none",
   entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist/static'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'static/bundle.js',
+    publicPath: '/public/'
   },
   devServer: {
     historyApiFallback: true,
@@ -49,9 +50,9 @@ module.exports = {
         {dry: true,}
     ),
       new CopyPlugin([
-        { from: 'public/index.html', to: '../' },
-        { from: 'public/style', to: 'style'},
-        { from: 'public/images', to: 'images'},
+        { from: 'public/index.html' },
+        { from: 'public/style', to: 'static/style'},
+        { from: 'public/images', to: 'static/images'},
       ]),
     ],
 };
