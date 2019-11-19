@@ -11,7 +11,7 @@
 }
 
 
-.title {
+.stitle {
     height: 60px;
     border-bottom: 1px solid #E1E8EE;
     padding: 20px 30px;
@@ -133,7 +133,7 @@
     height: 100px;
     margin-right: 50px;
 }
-.image {
+.simage {
     height: 100px;
     width: auto;
     display:block;

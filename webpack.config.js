@@ -7,8 +7,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'static/bundle.js',
-    publicPath: '/public/'
+    filename: 'static/bundle.js'
   },
   devServer: {
     historyApiFallback: true,
@@ -42,7 +41,18 @@ module.exports = {
         use: {
           loader: "babel-loader",
         }
-      }
+      },
+      {
+        test: /\.(woff|woff2)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options:{
+              outputPath: "static/fonts"
+            }
+          },
+        ],
+      },
     ]
   },
   plugins: [

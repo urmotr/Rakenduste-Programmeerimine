@@ -8,8 +8,9 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
-import store from "./store.js";
+import store from "./store/store.js";
 import CartPage from "./pages/CartPage.jsx";
+import { Provider } from "react-redux";
 
 console.log(store);
 
@@ -37,6 +38,7 @@ class App extends React.Component{
 
         render(){
                 return(
+                    <Provider store={store}>
                     <AuthContext.Provider value={this.state}>
                     <BrowserRouter>
                         <Route path={"/"} component={Header}
@@ -56,6 +58,7 @@ class App extends React.Component{
                         </Switch>
                     </BrowserRouter>
                     </AuthContext.Provider>
+                    </Provider>
                 );
         }
 }

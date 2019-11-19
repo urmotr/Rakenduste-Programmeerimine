@@ -4,6 +4,8 @@ import "./header.css";
 import {userIcon, cartIcon} from "./icons.js";
 import PropTypes from "prop-types";
 import authConsumer from "./authConsumer.jsx";
+import {connect} from "react-redux";
+import {ItemProps} from "../pages/CartPage.jsx";
 
 const Header = (props) => {
     return (
@@ -43,9 +45,10 @@ const WelcomeIcon = (props) => (
 Header.propTypes={
     token: PropTypes.string,
     user: PropTypes.object,
+    cart: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired
 };
 WelcomeIcon.propTypes={
     user: PropTypes.object,
 };
 
-export default authConsumer(Header);
+export default connect()(authConsumer(Header));

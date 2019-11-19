@@ -28,7 +28,8 @@ class LoginPage extends React.PureComponent {
             body: JSON.stringify(this.state)
         })
             .then(res => res.json())
-            .then(() => {
+            .then((json) => {
+                console.log(json);
                this.props.history.push("/login");
             })
             .catch(err =>{

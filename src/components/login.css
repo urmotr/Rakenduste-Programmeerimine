@@ -192,6 +192,7 @@
 }
 .card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
     border-color: #ed2553;
+    cursor:pointer;
 }
 .card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
     color: #ed2553;
@@ -313,6 +314,7 @@
 }
 .card.alt .button-container button:hover {
     background: rgba(255, 255, 255, 0.9);
+    cursor:pointer;
 }
 .card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
     display: none;

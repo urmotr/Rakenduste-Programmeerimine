@@ -1,0 +1,43 @@
+
+
+.title {
+    color: #000;
+    font-family: "Roboto", serif;
+    font-weight: 600;
+}
+
+.price{
+    color:#000;
+    font-size: 1.5em;
+    display: block;
+    font-weight: 700;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+}
+
+.item{
+    width: 100%;
+    display: block;
+}
+
+.desc{
+    text-align: justify;
+    font-family: "Roboto", serif;
+}
+
+.cover {
+    width: 70%;
+    left: 10%;
+}
+
+.image{
+    width:auto;
+    height:auto;
+    float: left;
+    padding-right: 30px;
+    padding-left: 15px;
+    margin-bottom: 220px;
+}
+

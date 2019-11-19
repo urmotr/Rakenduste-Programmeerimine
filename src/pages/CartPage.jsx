@@ -3,7 +3,8 @@ import "../components/shoppingcart.css";
 import {getItem} from "../components/Items.jsx";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import Fancybutton from "../components/Fancybutton.jsx";
 
 
 class cartPage extends React.PureComponent {
@@ -26,17 +27,14 @@ class cartPage extends React.PureComponent {
         return (
             <>
             <div className="shopping-cart">
-                <div className="title">
+                <div className="stitle">
                     Shopping Cart
                 </div>
                 <Item items={this.state.items}/>
             </div>
              <div className="pricecont">
                  Summa: {this.state.items.reduce( (a,b) => a+b.price,0 )}
-                 <div className="button-container">
-                     <button value={"Submit"}><span> <FontAwesomeIcon icon={faShoppingCart}/> Checkout</span></button>
-                 </div>
-
+                 <Fancybutton value={"Checkout"}/>
              </div>
             </>
         );
@@ -49,7 +47,7 @@ const Item = ({items}) => {
         {items.map ( (item) =>
                 <div className="cart" key={item._id}>
                     <div className="imageDiv">
-                        <img className="image" src={item.imgSrc} alt=""/>
+                        <img className="simage" src={item.imgSrc} alt=""/>
                     </div>
                     <div className="description">
                         <span>{item.title}</span>
@@ -64,8 +62,16 @@ const Item = ({items}) => {
     );
 };
 
+export const ItemProps = {
+    _id: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired
+};
+
 Item.propTypes={
-    items: PropTypes.array,
+    items: PropTypes.array.isRequired,
 };
 
 export default cartPage;

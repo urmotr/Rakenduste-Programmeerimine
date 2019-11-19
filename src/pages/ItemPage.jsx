@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../components/itempage.css";
+import Description from "../components/Description.jsx";
+import Fancybutton from "../components/Fancybutton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../store/store";
 
 class ItemPage extends React.PureComponent{
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired
+    };
+
     constructor(props){
         super(props);
         this.state = {
@@ -26,15 +35,24 @@ class ItemPage extends React.PureComponent{
                 console.log("item page", err);
             });
     };
+
+    handleBuy = () => {
+      console.log("Test");
+      this.props.dispatch(addItem(this.state._id));
+    };
+
     render(){
+        console.log();
         return (
-            <>
-           <div className={"tablets"}>
-                    <div className={"ititle"}>{this.state.title}</div>
-                    <img src={this.state.imgSrc} width={"144"} height={"222"}/>
-                    <div className={"iprice"}>{this.state.price}</div>
+            <div className={"cover"}>
+           <div className={"item"}>
+                    <img className={"image"} src={this.state.imgSrc}/>
+                    <div className={"title"}>{this.state.title}</div>
+                    <Description />
+                    <div className={"price"}>{this.state.price} €</div>
+               <Fancybutton onClick={this.handleBuy} value={"Buy"}/>
                 </div>
-       </>
+       </div>
         );
     }
 }
@@ -43,4 +61,4 @@ ItemPage.propTypes = {
     match: PropTypes.object.isRequired,
 };
 
-export default ItemPage;
+export default connect()(ItemPage);
