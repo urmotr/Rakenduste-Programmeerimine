@@ -2,15 +2,21 @@ import React from "react";
 import ItemList from "../components/ItemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import SortDropdown from "../components/SortDropdown.jsx";
-import {getItem} from "../components/Items.jsx";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {getItems} from "../store/store.js";
 
 class HomePage extends React.PureComponent{
+
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        items: PropTypes.array.isRequired
+    };
 
     constructor(props){
         super(props);
         this.state = {
             sortDirection: -1,
-            items: [],
             allCategories: ["phones", "tablets"],
             selectedCategories: ["tablets"],
             sortMethod: "Price high to low",
@@ -18,16 +24,7 @@ class HomePage extends React.PureComponent{
     }
 
     componentDidMount() {
-            getItem()
-            .then(items => {
-                this.setState({
-                    items: items,
-                });
-                this.setState({items: items});
-            })
-            .catch(err => {
-                console.log("err", err);
-            });
+        this.props.dispatch(getItems());
     }
 
     handleFilterSelect = (event) =>{
@@ -50,7 +47,7 @@ class HomePage extends React.PureComponent{
     };
 
     getVisibleItems = () => {
-      return this.state.items.filter(item => item.category === this.state.selectedCategories[0] || item.category === this.state.selectedCategories[1] || item.category === this.state.selectedCategories[2])
+      return this.props.items.filter(item => item.category === this.state.selectedCategories[0] || item.category === this.state.selectedCategories[1] || item.category === this.state.selectedCategories[2])
           .sort((a,b) => {
               switch (this.state.sortDirection){
                   case -1: return b.price - a.price;
@@ -97,4 +94,10 @@ class HomePage extends React.PureComponent{
     }
 }
 
-export default HomePage;
+const mapStateToProps = (store) => {
+  return {
+      items: store.items,
+  };
+};
+
+export default connect(mapStateToProps)(HomePage);
