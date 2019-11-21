@@ -1,11 +1,9 @@
 .shopping-cart {
     width: 750px;
-    height: 620px;
     margin: 80px auto;
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
-
     display: flex;
     flex-direction: column;
 }
@@ -21,20 +19,27 @@
 }
 
 .pricecont {
-    width: 150px;
-    height: 80px;
+    width: 200px;
+    height: 100px;
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
     flex-direction: column;
-    transform: translateY(-90%);
-    float: right;
-    right: 10%;
+    transform: translateY(-75%);
+    margin: 80px auto;
+    left: 275px;
 }
 
 .button-container {
-    margin: 0 20px;
+    margin: 5px 20px;
     text-align: center;
+}
+.pricetag {
+    float:left;
+}
+
+.pricer {
+    float: right;
 }
 .button-container button {
     outline: 0;

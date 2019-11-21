@@ -7,6 +7,16 @@
     display:inline-block;
 }
 
+.badge{
+    position: absolute;
+    padding: 2px 8px;
+    background: #ff1719;
+    color: white;
+    border-radius: 100%;
+    top: 40px;
+    right: 4px;
+}
+
 .header {
     overflow: hidden;
     background-color: #dbdbdb;
