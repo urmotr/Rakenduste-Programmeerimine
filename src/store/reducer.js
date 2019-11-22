@@ -2,6 +2,17 @@ const ITEMS_SUCCESS = "ITEM_LOADED";
 const ITEMS_REQUEST = "ITEM_REQUEST";
 const ITEMS_FAILURE = "ITEM_FAILURE";
 
+
+const initialState = {
+    user:{
+        email: null,
+        _id: null,
+        token: null
+    },
+    cart: [],
+    items: [],
+};
+
 export const itemsSuccess = (items) => ({
     type: ITEMS_SUCCESS,
     payload: items
@@ -44,7 +55,7 @@ export const getItems = () => (dispatch, getState)=>{
 
 const ITEM_REMOVE = "ITEM_REMOVE";
 
-const authReducer = (state, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case ITEM_REMOVE: {
             return{

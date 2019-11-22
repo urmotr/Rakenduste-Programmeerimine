@@ -10,17 +10,7 @@ const persistConfig = {
     storage,
 };
 
-
-const initialState = {
-    user:{
-        email: null,
-        _id: null,
-        token: null
-    },
-    cart: [],
-    items: [],
-};
-const persistedReducer = persistReducer(persistConfig, authReducer(initialState));
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 const store = createStore(persistedReducer, applyMiddleware(thunk));
 store.subscribe(() => console.log(store.getState()));
