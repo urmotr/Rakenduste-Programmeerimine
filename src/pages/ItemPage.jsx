@@ -4,7 +4,7 @@ import "../components/itempage.css";
 import Description from "../components/Description.jsx";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
-import {addItem} from "../store/store";
+import {addItem} from "../store/reducer";
 
 class ItemPage extends React.PureComponent{
     static propTypes = {

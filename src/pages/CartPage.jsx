@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../store/store";
+import {removeItem} from "../store/reducer";
 
 
 class cartPage extends React.PureComponent {

@@ -12,8 +12,6 @@ import store from "./store/store.js";
 import CartPage from "./pages/CartPage.jsx";
 import { Provider } from "react-redux";
 
-console.log(store);
-
 const root = document.getElementById("app");
 
 const authDefaultValue = {

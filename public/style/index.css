@@ -6,7 +6,6 @@ body{
     .items {
         width: 90%;
         margin: 0 auto;
-        margin-bottom: 20px;
         flex-wrap:wrap;
         overflow: auto;
     }
@@ -50,6 +49,10 @@ body{
         font-weight: 400;
         padding-top: 10px;
     }
+    .sortp {
+        left:45px;
+
+    }
 
 }
 
@@ -57,7 +60,6 @@ body{
     .items {
         width: 70%;
         margin: 0 auto;
-        margin-bottom: 20px;
         flex-wrap:wrap;
         overflow: auto;
     }
@@ -66,6 +68,7 @@ body{
     }
     .filters {
         float: left;
+        left: 1%;
     }
     .select {
         width: 225px;
