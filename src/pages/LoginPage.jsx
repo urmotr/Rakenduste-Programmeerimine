@@ -1,12 +1,15 @@
 import React from "react";
 import "../components/login.css";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {tokenUpdate, userUpdate} from "../store/actions";
+import {toast} from "react-toastify";
 
 class SignupPage extends React.PureComponent {
 
     static propTypes = {
       history: PropTypes.object.isRequired,
-      onLogin: PropTypes.func.isRequired,
+        dispatch: PropTypes.func.isRequired
     };
     constructor(props) {
         super(props);
@@ -29,8 +32,13 @@ class SignupPage extends React.PureComponent {
         })
             .then( res=> res.json())
             .then(({token, user}) =>{
-            this.props.onLogin(token, user);
-            this.props.history.push(`/users/${user._id}`);
+                this.props.dispatch(userUpdate(user));
+                this.props.dispatch(tokenUpdate(token));
+                this.props.history.push(`/users/${user._id}`);
+        })
+            .catch(err => {
+                console.log("Error: ", err);
+                toast.error("Sisselogimine ebaõnnestus");
         });
     }
 
@@ -66,4 +74,4 @@ class SignupPage extends React.PureComponent {
         );
     }
 }
-export default SignupPage;
+export default connect()(SignupPage);

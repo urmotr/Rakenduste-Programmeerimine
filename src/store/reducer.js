@@ -1,62 +1,33 @@
-const ITEMS_SUCCESS = "ITEM_LOADED";
-const ITEMS_REQUEST = "ITEM_REQUEST";
-const ITEMS_FAILURE = "ITEM_FAILURE";
+import {ITEM_REMOVE, ITEM_ADD, ITEMS_SUCCESS, USER_UPDATE, TOKEN_UPDATE} from "./actions";
+import PropTypes from "prop-types";
 
+export const UserPropTypes = {
+    email: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired
+};
 
 const initialState = {
-    user:{
-        email: null,
-        _id: null,
-        token: null
-    },
+    token: null,
+    user: null,
     cart: [],
     items: [],
 };
 
-export const itemsSuccess = (items) => ({
-    type: ITEMS_SUCCESS,
-    payload: items
-});
-export const itemsRequest = () => ({
-    type: ITEMS_REQUEST,
-});
-export const itemsFailure = () => ({
-    type: ITEMS_FAILURE,
-});
-
-const ITEM_ADD = "ITEM_ADD";
-
-export const addItem = (item) => ({
-    type: ITEM_ADD,
-    payload: item
-});
-
-export const removeItem = (index) => ({
-    type: ITEM_REMOVE,
-    payload: index
-});
-
-export const getItems = () => (dispatch, getState)=>{
-
-    if(getState().items.length > 0) return null;
-
-    dispatch(itemsRequest());
-    return fetch("/api/v1/items")
-        .then(res => {
-            return res.json();
-        })
-        .then(items => {
-            dispatch(itemsSuccess(items));
-        })
-        .catch(err=> {
-            console.log(err);
-        });
-};
-
-const ITEM_REMOVE = "ITEM_REMOVE";
-
-const authReducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case USER_UPDATE: {
+            return {
+                ...state,
+                user: action.payload,
+            };
+        }
+        case TOKEN_UPDATE: {
+            return {
+                ...state,
+                token: action.payload,
+            };
+        }
         case ITEM_REMOVE: {
             return{
                 ...state,
@@ -86,5 +57,3 @@ const removeItemByKey = (cart, key) => {
     copy.splice(key,1);
     return copy;
 };
-
-export default authReducer;

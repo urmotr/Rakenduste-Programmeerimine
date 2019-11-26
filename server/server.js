@@ -9,6 +9,25 @@ const userRouter = require("./user.router.js");
 const authRouter = require("./auth.router.js");
 const Item = require('./item.model');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'TLU',
+            version: '1.0.0'
+        },
+        servers: [{
+            url: '/api/v1'
+        }]
+    },
+    apis: ['./swagger/default.yaml', '/*.js']
+};
+
+
+const swaggerDocument = swaggerJsDoc(options);
 
 if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
@@ -27,6 +46,7 @@ mongoose.connect(DB_URL)
     });
 
 app.use(bodyParser.json());
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api/v1", itemRouter);
 app.use("/api/v1/auth", authRouter);

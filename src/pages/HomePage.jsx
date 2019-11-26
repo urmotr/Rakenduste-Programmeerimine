@@ -4,7 +4,7 @@ import Checkbox from "../components/Checkbox.jsx";
 import SortDropdown from "../components/SortDropdown.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {getItems} from "../store/reducer.js";
+import {getItems} from "../store/actions.js";
 
 class HomePage extends React.PureComponent{
 

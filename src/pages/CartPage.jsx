@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../store/reducer";
+import {removeItem} from "../store/actions";
+import {toast} from "react-toastify";
 
 
 class cartPage extends React.PureComponent {
@@ -15,6 +16,7 @@ class cartPage extends React.PureComponent {
     };
     trashItem=(key)=>{
         this.props.dispatch(removeItem(key));
+        toast.success("Toode eemaldatud");
     };
     render() {
         return (

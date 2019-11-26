@@ -1,6 +1,7 @@
 import React from "react";
 import "../components/login.css";
 import PropTypes from "prop-types";
+import {toast} from "react-toastify";
 
 class LoginPage extends React.PureComponent {
 
@@ -30,10 +31,16 @@ class LoginPage extends React.PureComponent {
             .then(res => res.json())
             .then((json) => {
                 console.log(json);
-               this.props.history.push("/login");
+                if(!json.errors){
+                    this.props.history.push("/login");
+                    toast.success("Registeerimine õnnestust");
+                } else {
+                    toast.error("Registeerimine ebaõnnestus: " + json.errors[0].msg,);
+                }
             })
             .catch(err =>{
                 console.log("Error", err);
+                toast.error("Registeerimine ebaõnnestus");
             });
     }
 
