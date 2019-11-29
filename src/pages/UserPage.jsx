@@ -5,6 +5,9 @@ import {connect} from "react-redux";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {tokenUpdate, userUpdate} from "../store/actions";
 import protectedRedirect from "../components/protectedRedirect.jsx";
+import "../components/style/userpage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
 class UserPage extends React.PureComponent {
 
@@ -20,8 +23,9 @@ class UserPage extends React.PureComponent {
 
     render() {
         return (
-            <div>
-                You are {this.props.user.email}, created at {this.props.user.createdAt}
+            <div className={"userContainer"}>
+                <div className={"userText"}><FontAwesomeIcon icon={faEnvelope}/> Email: {this.props.user.email}</div>
+                <div className={"userText"}><FontAwesomeIcon icon={faCalendarAlt}/> Created at: {this.props.user.createdAt}</div>
                 <Fancybutton onClick={this.handleSignOut} value={"Sign Out"}/>
             </div>
         );

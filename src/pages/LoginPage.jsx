@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/login.css";
+import "../components/style/login.css";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {tokenUpdate, userUpdate} from "../store/actions";

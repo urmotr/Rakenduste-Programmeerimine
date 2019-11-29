@@ -1,4 +1,12 @@
-
+.itemPageCont{
+    width: 1000px;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,0.10);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
 
 .title {
     color: #000;
@@ -15,6 +23,7 @@
     margin-left: auto;
     margin-right: auto;
     float: right;
+    right: 5%
 }
 
 .item{
@@ -25,6 +34,8 @@
 .desc{
     text-align: justify;
     font-family: "Roboto", serif;
+    margin-right: 5%;
+    margin-top: 1%;
 }
 
 .cover {
@@ -38,6 +49,6 @@
     float: left;
     padding-right: 30px;
     padding-left: 15px;
-    margin-bottom: 220px;
+    margin-bottom: auto;
 }
 

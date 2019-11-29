@@ -11,22 +11,9 @@ const Item = require('./item.model');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const swagger = require('./swagger');
 
-const options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'TLU',
-            version: '1.0.0'
-        },
-        servers: [{
-            url: '/api/v1'
-        }]
-    },
-    apis: ['./swagger/default.yaml', '/*.js']
-};
-
-
+const options = swagger.options;
 const swaggerDocument = swaggerJsDoc(options);
 
 if(process.env.NODE_ENV !== "production"){
