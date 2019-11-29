@@ -1,23 +1,23 @@
 import React from "react";
 import {Link } from "react-router-dom";
-import "./header.css";
+import "./style/header.css";
 import {userIcon, cartIcon} from "./icons.js";
 import PropTypes from "prop-types";
-import authConsumer from "./authConsumer.jsx";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
+import {UserPropTypes} from "../store/reducer";
 
 const Header = ({cart, user}) => {
-    console.log(cart);
+    console.log(user);
     return (
                 <div className={"header"}>
                     <Link to={"/"}>
                         <img src="/static/images/logo.jpg" width="300" height="100" alt="TLU logo"/>
                     </Link>
                     <div className={"header-right"}>
-                        {user.email && <WelcomeIcon user={user}/>}
+                        {user && <WelcomeIcon user={user}/>}
 
-                        {!user.email && <LoginRegisterIcon/>}
+                        {!user && <LoginRegisterIcon/>}
                         <Link to={"/checkout/cart"}>
                             <img className={"icon"} src={cartIcon}/>
                             <Badge>{cart.length}</Badge>
@@ -45,19 +45,20 @@ const LoginRegisterIcon = () => (
 
 const WelcomeIcon = (props) => (
     <>
-        <img className={"icon"} src={userIcon}/>
-        <div className={"icontext"}>
-            <Link to={`../users/${props.user._id}`} activeClassName="active">Welcome {props.user.email}</Link></div>
+        <Link  to={`../users/${props.user._id}`} activeClassName="active">
+            <img className={"icon"} src={userIcon}/>
+            <div className={"icontext"}>Welcome {props.user.email}</div>
+        </Link>
      </>
 );
 
 Header.propTypes={
     token: PropTypes.string,
-    user: PropTypes.object,
+    user: PropTypes.shape(UserPropTypes),
     cart: PropTypes.arrayOf(ItemProps).isRequired
 };
 WelcomeIcon.propTypes={
-    user: PropTypes.object,
+    user: PropTypes.shape(UserPropTypes),
 };
 
 Badge.propTypes={
@@ -67,7 +68,8 @@ Badge.propTypes={
 const mapStateToProps = (store) => {
   return {
       cart: store.cart,
+      user: store.user,
   };
 };
 
-export default connect(mapStateToProps)(authConsumer(Header));
+export default connect(mapStateToProps)(Header);

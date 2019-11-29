@@ -5,6 +5,8 @@
 
 .icontext{
     display:inline-block;
+    bottom: 10px;
+    font-weight: 600;
 }
 
 .badge{
@@ -19,7 +21,7 @@
 
 .header {
     overflow: hidden;
-    background-color: #dbdbdb;
+    background-color: #afb1a3;
     padding: 0 10px;
     position: sticky;
     top:0;

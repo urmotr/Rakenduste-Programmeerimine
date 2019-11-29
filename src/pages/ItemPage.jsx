@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../components/itempage.css";
+import "../components/style/itempage.css";
 import Description from "../components/Description.jsx";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
-import {addItem} from "../store/store";
+import {addItem} from "../store/actions";
+import {toast} from "react-toastify";
 
 class ItemPage extends React.PureComponent{
     static propTypes = {
@@ -37,20 +38,21 @@ class ItemPage extends React.PureComponent{
     };
 
     handleBuy = () => {
+      toast.success("Toode lisatud ostukorvi");
       this.props.dispatch(addItem(this.state));
     };
 
     render(){
         return (
-            <div className={"cover"}>
-           <div className={"item"}>
-                    <img className={"image"} src={this.state.imgSrc}/>
-                    <div className={"title"}>{this.state.title}</div>
-                    <Description />
-                    <div className={"price"}>{this.state.price} €</div>
-               <Fancybutton onClick={this.handleBuy} value={"Buy"}/>
+            <div className={"itemPageCont"}>
+               <div className={"item"}>
+                        <img className={"image"} src={this.state.imgSrc}/>
+                        <div className={"title"}>{this.state.title}</div>
+                        <Description />
+                        <div className={"price"}>{this.state.price} €</div>
+                   <Fancybutton onClick={this.handleBuy} value={"Buy"}/>
                 </div>
-       </div>
+            </div>
         );
     }
 }

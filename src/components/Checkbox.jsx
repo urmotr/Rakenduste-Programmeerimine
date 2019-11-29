@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../pages/homepage.css";
+import "./style/homepage.css";
 
 const Checkbox = ({name, onChange, checked}) => {
     return(

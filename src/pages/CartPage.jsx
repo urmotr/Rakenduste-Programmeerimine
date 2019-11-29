@@ -1,11 +1,12 @@
 import React from "react";
-import "../components/shoppingcart.css";
+import "../components/style/shoppingcart.css";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../store/store";
+import {removeItem} from "../store/actions";
+import {toast} from "react-toastify";
 
 
 class cartPage extends React.PureComponent {
@@ -15,6 +16,7 @@ class cartPage extends React.PureComponent {
     };
     trashItem=(key)=>{
         this.props.dispatch(removeItem(key));
+        toast.success("Toode eemaldatud");
     };
     render() {
         return (
