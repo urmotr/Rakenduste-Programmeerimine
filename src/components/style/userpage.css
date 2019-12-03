@@ -1,0 +1,16 @@
+.userContainer{
+    width: 550px;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,0.10);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+.userText{
+    font-size: 18px;
+    color: #43484D;
+    font-weight: 400;
+    display: unset;
+    left: 10%;
+}

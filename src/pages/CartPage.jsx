@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/shoppingcart.css";
+import "../components/style/shoppingcart.css";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";

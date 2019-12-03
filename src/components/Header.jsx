@@ -1,6 +1,6 @@
 import React from "react";
 import {Link } from "react-router-dom";
-import "./header.css";
+import "./style/header.css";
 import {userIcon, cartIcon} from "./icons.js";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
