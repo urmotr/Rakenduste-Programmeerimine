@@ -23,7 +23,7 @@ const options = {
             url: '/api/v1'
         }]
     },
-    apis: ['./swagger/default.yaml', '/*.js']
+    apis: ['./swagger/default.yaml']
 };
 
 
@@ -47,7 +47,6 @@ mongoose.connect(DB_URL)
 
 app.use(bodyParser.json());
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use("/api/v1", itemRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users",userRouter);
