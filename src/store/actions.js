@@ -1,3 +1,7 @@
+import * as services from "../services";
+import * as selectors from "../store/selectors";
+import {toast} from "react-toastify";
+
 export const ITEMS_SUCCESS = "ITEM_LOADED";
 export const ITEMS_REQUEST = "ITEM_REQUEST";
 export const ITEMS_FAILURE = "ITEM_FAILURE";
@@ -17,16 +21,6 @@ export const itemsRequest = () => ({
 export const itemsFailure = () => ({
     type: ITEMS_FAILURE,
 });
-
-export const addItem = (item) => ({
-    type: ITEM_ADD,
-    payload: item
-});
-
-export const removeItem = (index) => ({
-    type: ITEM_REMOVE,
-    payload: index
-});
 export const userUpdate = (user) => ({
     type: USER_UPDATE,
     payload: user
@@ -36,15 +30,51 @@ export const tokenUpdate = (token) => ({
     payload: token
 });
 
-export const getItems = () => (dispatch, getState)=>{
+export const removeItem = (itemId) => (dispatch, getState) => {
+    const store = getState();
+    const token = selectors.getToken(store);
+    const userId = selectors.getUser(store)._id;
+    services.removeItemFromCart({itemId, token, userId})
+        .then(() => {
+            dispatch({
+                type: ITEM_REMOVE,
+                payload: itemId
+            });
+            console.log(selectors.getCart(store));
+            toast.success("Toode edukalt eemaldatud!");
+        })
+        .catch( err => {
+            console.log(err);
+            toast.error("Toote eemaldamisel tekkis viga!");
+        });
+};
 
-    if(getState().items.length > 0) return null;
+export const addItem = (item) => (dispatch, getState) => {
+    const store = getState();
+    const itemId = item._id;
+    const token = selectors.getToken(store);
+    const userId = selectors.getUser(store)._id;
+    services.addItemToCart({itemId, token, userId})
+        .then(() => {
+            dispatch({
+                type: ITEM_ADD,
+                payload: itemId
+            });
+            console.log(selectors.getCart(store));
+            toast.success("Toode edukalt lisatud!");
+        })
+        .catch( err => {
+            console.log(err);
+            toast.error("Toote lisamisel tekkis viga!");
+        });
+};
+
+export const getItems = () => (dispatch, getState)=>{
+    const store =getState();
+    if(selectors.getItems(store).length > 0) return null;
 
     dispatch(itemsRequest());
-    return fetch("/api/v1/items")
-        .then(res => {
-            return res.json();
-        })
+    return services.getItems()
         .then(items => {
             dispatch(itemsSuccess(items));
         })

@@ -5,6 +5,7 @@ import SortDropdown from "../components/SortDropdown.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getItems} from "../store/actions.js";
+import * as selectors from "../store/selectors";
 
 class HomePage extends React.PureComponent{
 
@@ -96,7 +97,7 @@ class HomePage extends React.PureComponent{
 
 const mapStateToProps = (store) => {
   return {
-      items: store.items,
+      items: selectors.getItems(store),
   };
 };
 

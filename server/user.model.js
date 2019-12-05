@@ -6,6 +6,7 @@ var userSchema = new Schema({
     email: {type: String, required: true, unique: true},
     hash: {type: String, required: true},
     createdAt: {type: Date, default: Date.now},
+    cart: [],
 });
 
 userSchema.statics.signup = function({email, password}){
@@ -30,10 +31,12 @@ userSchema.statics.login = function({email, password}){
             bcrypt.compare(password, doc.hash, function(err, res) {
                 if(err) return reject(err);
                 if(!res) return reject("Invalid password");
+                console.log(doc);
                 resolve({
                     email: doc.email,
                     createdAt: doc.createdAt,
                     _id: doc._id,
+                    cart: doc.cart,
                 });
             });
         })

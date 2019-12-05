@@ -1,6 +1,18 @@
-body{
-    background-color: #ffffff;
+#app{
+    height: 100%;
 }
+
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background: url(/static/images/hero.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    margin: 80px auto;
+}
+
 
 @media screen and (min-width: 400px) {
     .items {
