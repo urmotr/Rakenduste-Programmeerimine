@@ -37,7 +37,7 @@ export const addItemToCart = ({userId, itemId, token}) => {
     })
         .then(res => {
             if(!res.ok) throw "addItemToCart Failed";
-            return res.json();
+            return true;
         });
 };
 
@@ -50,7 +50,7 @@ export const removeItemFromCart = ({userId, itemId, token}) => {
     })
         .then(res => {
             if(!res.ok) throw "removeItemFromCart Failed";
-            return res.json();
+            return res.true;
         });
 };
 
@@ -64,6 +64,7 @@ export const login = ({email, password}) => {
     })
         .then(res => {
             if(!res.ok) throw "Login Failed";
+            //console.log(res.json());
             return res.json();
         });
 };

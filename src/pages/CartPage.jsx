@@ -6,8 +6,8 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Fancybutton from "../components/Fancybutton.jsx";
 import {connect} from "react-redux";
 import {removeItem} from "../store/actions";
-import {toast} from "react-toastify";
 import * as selectors from "../store/selectors";
+import * as services from "../services.js";
 
 
 class cartPage extends React.PureComponent {
@@ -15,10 +15,32 @@ class cartPage extends React.PureComponent {
         cart: PropTypes.arrayOf(PropTypes.shape(ItemProps)).isRequired,
         dispatch: PropTypes.func.isRequired,
     };
-    trashItem=(key)=>{
-        this.props.dispatch(removeItem(key));
-        toast.success("Toode eemaldatud");
+    trashItem=(itemId)=>{
+        this.props.dispatch(removeItem(itemId));
     };
+    state = {
+        cartItems: []
+    };
+    componentDidMount() {
+        const promises = this.props.cart.map(itemId => services.getItem({itemId}));
+        Promise.all(promises).then(items => {
+            this.setState({
+                cartItems: items,
+            });
+        })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    componentDidUpdate(prevProps) {
+        const prevPropsIds = prevProps.cart.join("");
+        const currentIds = this.state.cartItems.join("");
+        if(prevPropsIds !== currentIds){
+            this.componentDidMount();
+        }
+    }
+
     render() {
         return (
             <>
@@ -26,12 +48,12 @@ class cartPage extends React.PureComponent {
                 <div className="stitle">
                     Shopping Cart
                 </div>
-                <Item trashItem={this.trashItem} items={this.props.cart}/>
+                <Item trashItem={this.trashItem} items={this.state.cartItems}/>
             </div>
              <div className="pricecont">
-                 <span className={"pricetag"}>Vahesumma</span><span className={"pricer"}>{Math.round(this.props.cart.reduce( (a,b) => a+b.price,0)*100)/100} €</span><br></br>
-                 <span className={"pricetag"}>Käibemaks</span><span className={"pricer"}>{Math.round(this.props.cart.reduce( (a,b) => a+b.price,0)*0.2*100)/100} €</span><br></br>
-                 <span className={"pricetag"}>Kokku</span><span className={"pricer"}>{Math.round(this.props.cart.reduce( (a,b) => a+b.price,0)*100+this.props.cart.reduce( (a,b) => a+b.price,0 )*0.2*100)/100} €</span><br></br>
+                 <span className={"pricetag"}>Vahesumma</span><span className={"pricer"}>{Math.round(this.state.cartItems.reduce( (a,b) => a+b.price,0)*100)/100} €</span><br></br>
+                 <span className={"pricetag"}>Käibemaks</span><span className={"pricer"}>{Math.round(this.state.cartItems.reduce( (a,b) => a+b.price,0)*0.2*100)/100} €</span><br></br>
+                 <span className={"pricetag"}>Kokku</span><span className={"pricer"}>{Math.round(this.state.cartItems.reduce( (a,b) => a+b.price,0)*100+this.state.cartItems.reduce( (a,b) => a+b.price,0 )*0.2*100)/100} €</span><br></br>
                  <Fancybutton onClick={() => console.log("Vormista ost")} value={"Checkout"}/>
              </div>
             </>
@@ -52,7 +74,7 @@ const Item = ({items, trashItem}) => {
                     </div>
                     <div className="total-price">{item.price} € </div>
                     <div className="buttons">
-                        <FontAwesomeIcon title={"eemalda"} onClick={() => trashItem(index)} className="delete-btn" icon={faTrashAlt}/>
+                        <FontAwesomeIcon title={"eemalda"} onClick={() => trashItem(item._id)} className="delete-btn" icon={faTrashAlt}/>
                     </div>
                 </div>
             )}
