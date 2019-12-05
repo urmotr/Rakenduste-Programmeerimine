@@ -35,7 +35,6 @@ router.post("/items", (req, res) => {
 });
 
 router.get("/items", (req, res) => {
-    //res.json(DB.getItems());
     Item.find({}, function (err, items) {
         if (err) {
             console.log("Error", err);

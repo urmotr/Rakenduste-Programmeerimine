@@ -1,3 +1,5 @@
+import * as services from "../services";
+import * as selectors from "../store/selectors";
 export const ITEMS_SUCCESS = "ITEM_LOADED";
 export const ITEMS_REQUEST = "ITEM_REQUEST";
 export const ITEMS_FAILURE = "ITEM_FAILURE";
@@ -37,14 +39,11 @@ export const tokenUpdate = (token) => ({
 });
 
 export const getItems = () => (dispatch, getState)=>{
-
-    if(getState().items.length > 0) return null;
+    const store =getState();
+    if(selectors.getItems(store).length > 0) return null;
 
     dispatch(itemsRequest());
-    return fetch("/api/v1/items")
-        .then(res => {
-            return res.json();
-        })
+    return services.getItems()
         .then(items => {
             dispatch(itemsSuccess(items));
         })

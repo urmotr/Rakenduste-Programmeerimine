@@ -8,6 +8,7 @@ import protectedRedirect from "../components/protectedRedirect.jsx";
 import "../components/style/userpage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import * as selectors from "../store/selectors";
 
 class UserPage extends React.PureComponent {
 
@@ -34,7 +35,7 @@ class UserPage extends React.PureComponent {
 
 const MapStateToProps = (store) => {
     return {
-        user: store.user,
+        user: selectors.getUser(store),
     };
 };
 

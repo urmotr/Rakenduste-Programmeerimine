@@ -1,3 +1,4 @@
+import * as services from "../services";
 import React from "react";
 import "../components/style/login.css";
 import PropTypes from "prop-types";
@@ -21,14 +22,7 @@ class LoginPage extends React.PureComponent {
     }
     handleSubmit(event) {
         event.preventDefault();
-        fetch("/api/v1/auth/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-            .then(res => res.json())
+        services.signup(this.state)
             .then((json) => {
                 console.log(json);
                 if(!json.errors){

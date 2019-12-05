@@ -38,6 +38,7 @@ class App extends React.Component{
                             <BrowserRouter>
                                 <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>
                                 <Route path={"/"} component={Header}/>
+                                <div className="hero-image">
                                 <Switch>
                                     <Route path="/" exact component={HomePage} />
                                     <Route path="/login" exact component={LoginPage}/>
@@ -47,6 +48,7 @@ class App extends React.Component{
                                     <Route path="/checkout/cart" exact component={CartPage} />
                                     <Route path="*" exact component={NotFoundPage}/>
                                 </Switch>
+                                </div>
                             </BrowserRouter>
                         </PersistGate>
                     </Provider>
@@ -55,7 +57,8 @@ class App extends React.Component{
 }
 
 ReactDOM.render(
+    <App>
 
-    <App/>,
+    </App>,
     root
 );
